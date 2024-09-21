@@ -9,6 +9,6 @@ zone_offset             = 8
 admin_users = ["k8s-Admin"]
 # developer_users                = ["leke", "david"]
 developer_users                = ["k8s-Admin"]
-asg_instance_types             = [{ instance_type = "t3.medium" }, { instance_type = "t3a.medium" }, ]
+asg_instance_types             = [{ instance_type = "t3.medium" }, { instance_type = "t2.medium" }, ]
 autoscaling_minimum_size_by_az = 1
 autoscaling_maximum_size_by_az = 10
