@@ -9,7 +9,7 @@
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "oidc.eks.us-west-1.amazonaws.com/id/E534E103A3926BEF107C6904962058D9:sub": "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+          "oidc.eks.us-west-1.amazonaws.com/id/E534E103A3926BEF107C6904962058D9:sub": "system:serviceaccount:cert-manager:cert-manager"
         }
       }
     }

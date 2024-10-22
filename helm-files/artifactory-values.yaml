@@ -1,0 +1,85 @@
+# databaseUpgradeReady: true
+# unifiedUpgradeAllowed: true
+# networkpolicy:
+#   # Uncomment to allow only artifactory pods to communicate with postgresql (if postgresql.enabled is true)
+#   - name: postgresql
+#     podSelector:
+#       matchLabels:
+#         app: postgresql
+#     ingress:
+#       - from:
+#           - podSelector:
+#               matchLabels:
+#                 app: artifactory
+# ingress:
+#   className: nginx
+#   enabled: true
+#   defaultBackend:
+#     enabled: true
+# nginx:
+#   enabled: true
+#   hosts:
+#     - tooling.artifactory.fnc.dns-dynamic.net
+
+
+databaseUpgradeReady: true
+unifiedUpgradeAllowed: true
+networkpolicy:
+  # Uncomment to allow only artifactory pods to communicate with postgresql (if postgresql.enabled is true)
+  - name: postgresql
+    podSelector:
+      matchLabels:
+        app: postgresql
+    ingress:
+      - from:
+          - podSelector:
+              matchLabels:
+                app: artifactory
+ingress:
+  className: nginx
+  enabled: true
+  defaultBackend:
+    enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: ssl
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/private-key-rotation-policy: Always
+  labels:
+    name: artifactory
+  tls:
+  - hosts:
+    - tooling.artifactory.fnc.dns-dynamic.net
+    secretName: tooling.artifactory.fnc.dns-dynamic.net
+nginx:
+  enabled: true
+  hosts:
+    - tooling.artifactory.fnc.dns-dynamic.net
+  service:
+    type: LoadBalancer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # To output the default helm chat configuration run
+# helm show values jfrog/artifactory > artifactory-default.yaml
+
+
+# # Run this command to upgrade the helm release
+# helm upgrade --install artifactory jfrog/artifactory --version 107.90.10 -n tools -f values.yaml

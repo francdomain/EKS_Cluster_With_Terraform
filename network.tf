@@ -61,23 +61,3 @@ module "vpc" {
     iac_environment                             = var.iac_environment_tag
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
