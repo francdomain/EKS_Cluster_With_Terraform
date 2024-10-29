@@ -1,6 +1,6 @@
 # Building Elastic Kubernetes Service (EKS) With Terraform
 
-__Here's the link to the project documentations__
+__Here are the links to the project documentations__
 
 - [Building Elastic Kubernetes Service (EKS) With Terraform](https://github.com/francdomain/StegHub_DevOps-Cloud_Engineering/tree/main/Building_Elastic_Kubernetes_Service_(EKS)_With_Terraform)
 
